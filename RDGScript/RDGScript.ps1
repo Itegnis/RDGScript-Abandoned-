@@ -63,17 +63,17 @@ function global:RDGScript()
                 }if ($check -eq $TRUE){
 					$res = [System.IO.File]::Exists($insdir)
 					$res2 = [System.IO.File]::Exists($playact) #Fix for only playact path
-                    if (![System.IO.File]::Exists($insdir) -and ![System.IO.File]::Exists($playact)){
+                    if (![System.IO.File]::Exists($insdir) -and ![System.IO.File]::Exists($playact) -and ($dir -notmatch "WindowsApps") -and ($game.IsInstalled -eq $true)){
                         $info = $info + $name + " is exist: " + $res + "`n" +  $insdir + "`n" + "`n"
                         # Add $i items to the CheckedListBox
-						$checkedlistbox1.Items.Add($game)
-						
-                    }else{}
-               
-                }else{}
-           
+						$checkedlistbox1.Items.Add($game)}
+					if($dir -match "WindowsApps" -and ![System.IO.Directory]::Exists($dir) -and ($game.IsInstalled -eq $true)){
+                        $info = $info + $name + " is exist: " + $res + "`n" +  $insdir + "`n" + "`n"
+                        $checkedlistbox1.Items.Add($game)
+                        }
+                    }
                 $i = $i + 1
-			
+			    $checkedlistbox1.Sorted = $TRUE
 			
 		}
 		if ($info -ne $NULL) { $PlayniteAPI.Dialogs.ShowMessage($info) }
