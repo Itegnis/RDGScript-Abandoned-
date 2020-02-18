@@ -1,0 +1,8 @@
+Name: RDGScript for Community
+Author: Itegnis
+Version: 1.0
+Module: RDGScript.ps1
+Type: Script
+Functions: 
+    - Description: Mark a deleted games as unistalled
+      FunctionName: RDGScript
