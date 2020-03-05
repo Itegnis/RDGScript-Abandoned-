@@ -4,5 +4,5 @@ Version: 1.0
 Module: RDGScript.ps1
 Type: Script
 Functions: 
-    - Description: Mark a deleted games as unistalled
+    - Description: Mark deleted games as uninstalled
       FunctionName: RDGScript

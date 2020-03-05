@@ -218,9 +218,9 @@ wfPMQMHzzH/A88z/iPOMf5zzjHmc8x55nPAeMYDwPiGB8P8D////B///////////////////////
 	$labelGamesThatYouHaveDele.Name = 'labelGamesThatYouHaveDele'
 	$labelGamesThatYouHaveDele.Size = '427, 61'
 	$labelGamesThatYouHaveDele.TabIndex = 5
-	$labelGamesThatYouHaveDele.Text = 'Games that you have deleted, select the ones you wish
-to mark as unistalled and click Mark Selected.
-Or click on the Mark All button for mark all unistalled games.'
+	$labelGamesThatYouHaveDele.Text = 'Games that you have deleted. Select the ones you wish
+to mark as uninstalled and click Mark Selected.
+or click on the Mark All button to mark all uninstalled games.'
 	$labelGamesThatYouHaveDele.UseCompatibleTextRendering = $True
 
     $checkedlistbox1.Font = 'Microsoft Sans Serif, 12.25pt'
