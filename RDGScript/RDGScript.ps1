@@ -51,7 +51,11 @@ function global:RDGScript()
 				$dir = $PlayniteApi.ExpandGameVariables($game, $game.InstallDirectory)
                 $playact = $PlayniteApi.ExpandGameVariables($game, $game.PlayAction.Path)
                 $lengthdir = $dir.Length -1
-                if ($lengthdir -eq -1){
+                if ($playact -match "steam://"){
+                    $insdir = $dir
+                    $check = $playact -match "steam://"
+                    }
+                elseif ($lengthdir -eq -1){
 					$insdir = $playact
 					$check = $playact -match ".exe"
                 }elseif ($dir.Chars($lengthdir) -eq "\"){
@@ -63,11 +67,15 @@ function global:RDGScript()
                 }if ($check -eq $TRUE){
 					$res = [System.IO.File]::Exists($insdir)
 					$res2 = [System.IO.File]::Exists($playact) #Fix for only playact path
-                    if (![System.IO.File]::Exists($insdir) -and ![System.IO.File]::Exists($playact) -and ($dir -notmatch "WindowsApps") -and ($game.IsInstalled -eq $true)){
+                    if (![System.IO.File]::Exists($insdir) -and ![System.IO.File]::Exists($playact) -and ($dir -notmatch "WindowsApps") -and($playact -notmatch "steam://") -and ($game.IsInstalled -eq $true)){
                         $info = $info + $name + " is exist: " + $res + "`n" +  $insdir + "`n" + "`n"
                         # Add $i items to the CheckedListBox
 						$checkedlistbox1.Items.Add($game)}
 					if($dir -match "WindowsApps" -and ![System.IO.Directory]::Exists($dir) -and ($game.IsInstalled -eq $true)){
+                        $info = $info + $name + " is exist: " + $res + "`n" +  $insdir + "`n" + "`n"
+                        $checkedlistbox1.Items.Add($game)
+                        }
+                        if($playact -match "steam://" -and ![System.IO.Directory]::Exists($dir) -and ($game.IsInstalled -eq $true)){
                         $info = $info + $name + " is exist: " + $res + "`n" +  $insdir + "`n" + "`n"
                         $checkedlistbox1.Items.Add($game)
                         }
